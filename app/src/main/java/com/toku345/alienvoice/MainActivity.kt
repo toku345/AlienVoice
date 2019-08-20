@@ -4,7 +4,6 @@ import android.media.MediaPlayer
 import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.Manifest
 import android.content.Context
@@ -58,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         player = MediaPlayer().apply {
             try {
                 setDataSource(fileName)
+
+                var params = playbackParams
+                params.pitch = 2.0f
+                playbackParams = params
+
                 prepare()
                 start()
             } catch (e: IOException) {
